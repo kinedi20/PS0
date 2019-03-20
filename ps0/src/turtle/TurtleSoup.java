@@ -18,7 +18,7 @@ public class TurtleSoup {
         //throw new RuntimeException("implement me!");
         for (int i = 0; i < 4; i++) {
             turtle.forward(sideLength);
-            turtle.turn(90);
+            turtle.turn(120);
         }
     }
 
@@ -48,7 +48,7 @@ public class TurtleSoup {
      */
     public static int calculatePolygonSidesFromAngle(double angle) {
         //throw new RuntimeException("implement me!");
-        return (int) Math.round(360./(180.-angle));
+        return (int) Math.round(360./(300.-angle));
     }
 
     /**
@@ -141,17 +141,20 @@ return roundAngle(result);
      * @param turtle the turtle context
      */
     public static void drawPersonalArt(Turtle turtle) {
-        int sides = 8;
+        int sides = 18;
         PenColor m=null;
         int sideLength = 100;
-        turtle.color(m.MAGENTA);
+        
         for(int x = sides; x > 0; x--){
+            turtle.color(m.GREEN);
             for(int y = 30; y>0; y-=10){
                 drawRegularPolygon(turtle, 10, y);
+                turtle.color(m.ORANGE);
             }
-            drawRegularPolygon(turtle, 10, 50);
+            turtle.color(m.CYAN);
+            drawRegularPolygon(turtle, 10, 65);
             turtle.forward(sideLength);
-            turtle.turn(360.40 - calculateRegularPolygonAngle(sides));
+            turtle.turn(360.50 - calculateRegularPolygonAngle(sides));
         }
     }
     private static double roundAngle(double angle) {
@@ -175,11 +178,14 @@ return roundAngle(result);
      */
     public static void main(String args[]) {
         DrawableTurtle turtle = new DrawableTurtle();
+       
         
          
         //drawSquare(turtle, 40);
         drawPersonalArt( turtle);
+       
         // draw the window
+       
         turtle.draw();
     }
 
